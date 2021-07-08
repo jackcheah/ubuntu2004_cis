@@ -1,6 +1,7 @@
 Ubuntu 20.04 CIS STIG
 ================
 
+Orignial Author:
 [![Build Status](https://travis-ci.com/florianutz/ubuntu2004_cis.svg?branch=main)](https://travis-ci.com/florianutz/ubuntu2004_cis)
 [![Ansible Role](https://img.shields.io/badge/role-florianutz.ubuntu2004--cis-blue.svg)](https://galaxy.ansible.com/florianutz/ubuntu2004_cis/)
 
@@ -37,7 +38,7 @@ With this in the file requirements.yml:
 
 ```
 - name: Harden Server
-  hosts: servers
+  hosts: localhost
   become: yes
 
   roles:

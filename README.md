@@ -13,24 +13,20 @@ This role **will make changes to the system** that could break things. This is n
 
 Based on [CIS Ubuntu Linux 20.04 LTS Benchmark - v1.0.0 - 07-21-2020 ](https://www.cisecurity.org/cis-benchmarks/).
 
-## Feedback
-
-- If you like our work but cannot contribute to the code of the role by yourself, please take a moment to rate it in Ansible Galaxy.
- There you can easily give positive feedback to the developers about their work.
- [Galaxy Community Score](https://galaxy.ansible.com/florianutz/ubuntu2004_cis/)
-- If you find a bug within the role, but can't fix it yourself, please create a ticket with as many details as possible. Please keep in mind that all developers work on the project in their spare time, and it may take some time to get feedback [Issues Page](https://github.com/florianutz/ubuntu2004_cis/issues)
+- https://github.com/florianutz/ubuntu2004_cis/issues)
 
 ## IMPORTANT INSTALL STEP
 
-If you want to install this via the `ansible-galaxy` command you'll need to run it like this:
+The scripts are deployed by Ansible Playbook, hence it is then required to have Ansible Playbook installed using the following commands prior to running the hardening scripts.
 
-`ansible-galaxy install -p roles -r requirements.yml`
+- sudo apt update
+- sudo apt install ansible
 
-With this in the file requirements.yml:
+Ensure the Ansible is correctly installed by "ansible --version" command.
 
-```
-- src: https://github.com/florianutz/ubuntu2004_cis.git
-```
+Then Git clone this repo to the directory of your Ubuntu machine, for example "/home/user/hardening".
+
+Copy the "default/main.yml" file onto the same level (right beside) the ubuntu2004_cis folder. Edit the main.yml Playbook file accordingly as below example.
 
 ## Example Playbook
 
@@ -45,13 +41,10 @@ With this in the file requirements.yml:
     - ubuntu2004_cis
 ```
 
-To run the tasks in this repository, first create this file one level above the repository
-(i.e. the playbook .yml and the directory `ubuntu2004_cis` should be next to each other),
-then review the file `defaults/main.yml` and disable any rule/section you do not wish to execute.
+Review the "main.yml "that you have copied from default folder. Once you are ready, execute the below command to run the hardening script.
 
-Assuming you named the file `site.yml`, run it with:
 ```bash
-ansible-playbook site.yml
+ansible-playbook main.yml
 ```
 
 ## Requirements
@@ -103,7 +96,7 @@ ubuntu2004cis_httpd_server: false
 ubuntu2004cis_vsftpd_server: false  
 ubuntu2004cis_named_server: false  
 ubuntu2004cis_allow_autofs: false
-```  
+```
 
 ### Designate server as a Mail server
 `ubuntu2004cis_is_mail_server: false`
@@ -168,7 +161,7 @@ ubuntu2004cis_time_synchronization_servers:
 It is not implemented, noexec for /tmp will disrupt apt. /tmp contains executable scripts during package installation
 ```
 
-```  
+```
 ### 1.5.3 | PATCH | Ensure authentication required for single user mode
 It is disabled by default as it is setting random password for root. To enable it set:
 ```yaml
@@ -185,7 +178,7 @@ ubuntu2004cis_host_allow:
   - "10.0.0.0/255.0.0.0"  
   - "172.16.0.0/255.240.0.0"  
   - "192.168.0.0/255.255.0.0"    
-```  
+```
 
 ```
 ubuntu2004cis_firewall: firewalld

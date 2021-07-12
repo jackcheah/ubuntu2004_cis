@@ -26,7 +26,7 @@ Ensure the Ansible is correctly installed by "ansible --version" command.
 
 Then Git clone this repo to the directory of your Ubuntu machine, for example "/home/user/hardening".
 
-Copy the "default/main.yml" file onto the same level (right beside) the ubuntu2004_cis folder. Edit the main.yml Playbook file accordingly as below example.
+Create a yml file (harden.yml for example) file onto the same level (right beside) the ubuntu2004_cis folder. Edit the harden.yml Playbook file accordingly as below example.
 
 ## Example Playbook
 
@@ -41,10 +41,10 @@ Copy the "default/main.yml" file onto the same level (right beside) the ubuntu20
     - ubuntu2004_cis
 ```
 
-Review the "main.yml "that you have copied from default folder. Once you are ready, execute the below command to run the hardening script.
+Review the "harden.yml "that you have copied from default folder. Once you are ready, execute the below command to run the hardening script.
 
 ```bash
-ansible-playbook main.yml
+ansible-playbook harden.yml
 ```
 
 ## Requirements
